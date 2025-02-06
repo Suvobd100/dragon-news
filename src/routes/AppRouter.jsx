@@ -27,14 +27,13 @@ const AppRouter = () => {
           {/* <Route index element={<Home />} /> */}
           {/* <Route path="/" element={<Navigate to={"category/01"}/>} /> */}
           {/* Dynamic category  */}
-          <Route path="category/:id" element={<CategoryNews />} 
-          // loader={categoryLoader}
-          
-          />
+          <Route path="category/:id" element={<CategoryNews />} />
 
-          <Route path="news/:id" element={<News/>} />
-          
           <Route path="*" element={<NotFound />} />
+        </Route>
+        {/* new route alone */}
+        <Route>
+          <Route path="news/:id" element={<News />} />
         </Route>
 
         <Route path="/auth" element={<AuthLayout />}>

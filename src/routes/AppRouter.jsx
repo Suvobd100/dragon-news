@@ -7,6 +7,7 @@ import Login from "../components/Login";
 import Register from "../components/Register";
 import NotFound from "../components/NotFound";
 import CategoryNews from "../components/pages/CategoryNews";
+import NewsDetails from "../components/NewsDetails";
 
 // Define loader function for category id wise data
 // const categoryLoader = async({params})=>{
@@ -31,7 +32,8 @@ const AppRouter = () => {
           
           />
 
-          <Route path="news" element={<News />} />
+          <Route path="news/:id" element={<News/>} />
+          
           <Route path="*" element={<NotFound />} />
         </Route>
 

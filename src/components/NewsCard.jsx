@@ -1,4 +1,5 @@
 import { FaBookmark, FaEye, FaShareAlt, FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const NewsCard = ({ news }) => {
   // const {title,details}=news
@@ -48,7 +49,7 @@ const NewsCard = ({ news }) => {
               ? `${news.details.substring(0, 100)}...`
               : news.details}
           </p>
-          <button className="text-red-500 font-semibold mt-2">Read More</button>
+          <Link to={`/news/${news._id}`} className="text-red-500 font-semibold mt-2">Read More</Link>
         </div>
 
         {/* Footer Section */}

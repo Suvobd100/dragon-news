@@ -20,7 +20,7 @@ const News = () => {
         );
         if (!res.ok) throw new Error("Failed to fetch data");
         const result = await res.json();
-        console.log("news detail:---", result.data[0]);
+        // console.log("news detail:---", result.data[0]);
         setNewsData(result.data[0]);
       } catch (err) {
         setError(err.message);
@@ -34,7 +34,7 @@ const News = () => {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
-  console.log(newsData);
+  // console.log(newsData);
 
   return (
     <div>

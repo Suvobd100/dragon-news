@@ -13,17 +13,17 @@ const Register = () => {
     const photo = form.get("photo");
     const password = form.get("password");
 
-    console.log({ name, email, photo, password });
+    // console.log({ name, email, photo, password });
     createNewUser(email, password)
       .then((result) => {
         const user = result.user;
         setUser(user)
-        console.log(user);
+        // console.log(user);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-       console.log('ERROR Firebase:-',errorCode,errorMessage);
+      //  console.log('ERROR Firebase:-',errorCode,errorMessage);
       });
   };
   return (

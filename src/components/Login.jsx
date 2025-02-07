@@ -1,25 +1,28 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
   const { userLogin, setUser } = useContext(AuthContext);
+  const location = useLocation();
+  // console.log("Login Location---", location);
+  const navigate = useNavigate();
+
   const handelSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log({ email, password });
-    userLogin(email,password)
-    .then(result=>{
-      const user = result.user;
-      setUser(user);
-      
-    })
-    .catch((error)=>{
-        alert(error.code)
-    })
-
+    // console.log({ email, password });
+    userLogin(email, password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        navigate(location?.state? location.state : "/")
+      })
+      .catch((error) => {
+        alert(error.code);
+      });
   };
   return (
     <div className="min-h-screen flex justify-center items-center">

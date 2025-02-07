@@ -16,7 +16,7 @@ const CategoryNews = () => {
         );
         if (!res.ok) throw new Error("Failed to fetch data");
         const result = await res.json();
-        console.log(result.data);
+        // console.log(result.data);
         setNewsData(result.data);
       } catch (err) {
         setError(err.message);
@@ -30,11 +30,11 @@ const CategoryNews = () => {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
-  console.log(newsData);
+  // console.log(newsData);
 
   return <div>
 
-<h1>Category News No:{newsData.length}</h1>
+
 {
     newsData.map((news)=><NewsCard key={news._id} news={news}/>)
 }

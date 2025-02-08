@@ -7,10 +7,11 @@ import { AuthContext } from "../provider/AuthProvider";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   // console.log(user);
-  console.log('from nav clg:',user);
+  // console.log("from nav clg:", user);
   return (
     <div className="flex justify-between">
-      <div>{user && user?.email|| user?.displayName}</div>
+      {/* if user have then have email print email or have display name print in Left NAV */}
+      <div>{(user && user?.email) || user?.displayName}</div>
 
       <div className="nav space-x-5">
         <Link to="/">Home</Link>
@@ -18,7 +19,7 @@ const Navbar = () => {
         <Link to="about">About</Link>
       </div>
       <div className="login flex gap-2">
-        {/* Display user login & register user info */}
+        {/* Display user login & register || Gmail, Github also user info */}
         <div>
           {user && user?.displayName ? (
             <div>

@@ -1,9 +1,14 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Register = () => {
-  const { createNewUser,setUser } = useContext(AuthContext);
+  const { err, setErr } = useState;
+  const { createNewUser, setUser, handelUpdateUserProfile } =
+    useContext(AuthContext);
+  // user navigate some link by this
+  const navigate = useNavigate();
+
   const handelSubmit = (e) => {
     e.preventDefault();
     // get form data
@@ -17,13 +22,23 @@ const Register = () => {
     createNewUser(email, password)
       .then((result) => {
         const user = result.user;
-        setUser(user)
+        setUser(user);
         // console.log(user);
+        // current user update Profile name,photo
+        handelUpdateUserProfile({ displayName: name, photoURL: photo });
+      })
+      .then(() => {
+        navigate("/");
       })
       .catch((error) => {
-        const errorCode = error.code;
+        setErr(error.message);
+      })
+
+      .catch((error) => {
+        // const errorCode = error.code;
         const errorMessage = error.message;
-      //  console.log('ERROR Firebase:-',errorCode,errorMessage);
+        setErr(errorMessage);
+        //  console.log('ERROR Firebase:-',errorCode,errorMessage);
       });
   };
   return (
